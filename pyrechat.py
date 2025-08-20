@@ -1,31 +1,13 @@
 import pyrebase
-import os
-import requests
-import shutil
 import pyperclip
-import datetime
-import time
 import pyautogui
+import requests
+import json
+import os, shutil
+import time, datetime
 
-config = {
-	"apiKey": "...",
-	"authDomain": "...",
-	"databaseURL": "...",
-	"storageBucket": "...",
-	"serviceAccount": {
-		"type": "service_account",
-		"project_id": "...",
-		"private_key_id": "...",
-		"private_key": "...",
-		"client_email": "...",
-		"client_id": "...",
-		"auth_uri": "...",
-		"token_uri": "...",
-		"auth_provider_x509_cert_url": "...",
-		"client_x509_cert_url": "...",
-		"universe_domain": "..."
-	}
-}
+with open("firebase-secrets.json", "r") as file:
+	config = json.load(file)
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
